@@ -3,17 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "@radix-ui/react-form": "^0.0.3",
+    "@radix-ui/react-toast": "^1.1.5",
+    "axios": "^1.5.1",
     "class-variance-authority": "^0.7.0",
     "next": "latest",
+    "next-auth": "^4.23.2",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-hook-form": "^7.47.0",
+    "react-icons": "^4.11.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -23,7 +30,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
-    "tailwindcss": "latest",
+    "tailwindcss": "^3.3.3",
     "typescript": "latest"
   }
 }
