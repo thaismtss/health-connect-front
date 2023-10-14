@@ -3,7 +3,11 @@ import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { serverInstace } from '@/lib/axios';
 
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
+  session: {
+    strategy: 'jwt',
+    maxAge: 24 * 60 * 60,
+  },
   pages: {
     signIn: '/login',
   },
@@ -26,11 +30,26 @@ const authOptions: NextAuthOptions = {
           throw new Error(data.message);
         }
 
-        const user = data.user;
+        const { data: user } = data;
         return user || {};
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.accessToken = user.accessToken;
+        token.name = user.name;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.accessToken = token.accessToken;
+      session.user.name = token.name;
+
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
