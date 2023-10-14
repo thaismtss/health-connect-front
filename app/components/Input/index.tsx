@@ -66,7 +66,7 @@ export default function Input({
             {label}
           </Form.Label>
         </div>
-        <div className="text-red-500 text-sm h-6 pt-1">
+        <div className="text-red-500 text-xs h-6 pt-1">
           {message && <Form.Message> {message} </Form.Message>}
         </div>
       </div>
