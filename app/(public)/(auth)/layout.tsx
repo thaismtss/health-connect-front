@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import Image from 'next/image';
 import IllustrationHome from '@/assets/illustration-home.svg';
-import ToastProvider from '../components/Toast';
+import ToastProvider from '../../components/Toast';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -23,8 +23,8 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <body className={montserrat.className}>
-        <main className="flex h-screen">
-          <div className="bg-primary w-1/2 h-screen flex justify-center">
+        <main className="md:flex h-screen overflow-x-hidden">
+          <div className="hidden md:flex bg-primary w-1/2 h-screen  justify-center">
             <div className="absolute top-10 left-10">
               <p className="text-xl font-bold text-white text-center">
                 HealthConnect
@@ -35,10 +35,13 @@ export default function RootLayout({
               alt="Ilustração de saúde"
               height={350}
               width={350}
+              className="hidden md:block"
             />
           </div>
           <ToastProvider>
-            <div className="w-full md:w-1/2 bg-white">{children}</div>
+            <div className="flex justify-center items-center h-[90vh] w-full md:w-1/2 bg-white">
+              {children}
+            </div>
           </ToastProvider>
         </main>
       </body>

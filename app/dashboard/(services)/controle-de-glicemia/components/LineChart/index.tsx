@@ -47,5 +47,11 @@ export default function LineChart({ glycemic }: { glycemic: GlycemicControl }) {
       },
     ],
   };
-  return <Line data={data} options={options} />;
+  return (
+    <Line
+      data={data}
+      options={options}
+      className="absolute left-1 top-2 md:static w-[1200px] md:w-full"
+    />
+  );
 }

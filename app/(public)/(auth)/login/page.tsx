@@ -54,7 +54,7 @@ export default function LoginPage() {
     }
   }
   return (
-    <main className="flex flex-col h-full gap-8">
+    <main className="flex flex-col h-full gap-8 px-4">
       <Form
         className="flex w-full md:max-w-fit m-auto"
         onSubmit={formMethods.handleSubmit(handleSubmitLogin)}

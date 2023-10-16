@@ -30,7 +30,9 @@ export default async function RootLayout({
     <html lang="pt">
       <body className={`${montserrat.className} flex flex-col min-h-screen`}>
         <header className="flex justify-between bg-primary  rounded-b-xl p-4 mx-8 z-[9999]">
-          <p className="font-bold text-white text-sm">HealthConnect</p>
+          <p className="hidden md:block font-bold text-white text-sm">
+            HealthConnect
+          </p>
           <Menu />
           <Logout />
         </header>

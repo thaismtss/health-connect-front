@@ -114,10 +114,10 @@ export default function GlycemicControlPage() {
   }
 
   return (
-    <main className="bg-tertiary flex-grow pt-8 -mt-16">
-      <div className="px-8 mt-16">
-        <section className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+    <main className="bg-tertiary flex-grow pt-8 -mt-16 overflow-x-hidden">
+      <div className="md:px-8 mt-16 mb-12">
+        <section className="flex items-center justify-between flex-wrap px-8  md:px-0">
+          <div className="flex items-center gap-4 ">
             <Image
               src={Glycemic}
               width={60}
@@ -185,7 +185,7 @@ export default function GlycemicControlPage() {
           </div>
         </section>
         {!glycemics?.data.glycemic.length ? (
-          <div className="flex flex-col gap-4 justify-center items-center min-h-screen">
+          <div className="flex flex-col gap-4 justify-center items-center min-h-screen px-8  md:px-0">
             <Image
               src={NoDataImage}
               width={200}
@@ -198,8 +198,8 @@ export default function GlycemicControlPage() {
           </div>
         ) : (
           <Fragment>
-            <section className="mt-12 flex gap-4 h-60">
-              <div className="flex flex-col justify-between gap-4">
+            <section className="mt-12 flex flex-wrap md:flex-nowrap gap-4 md:h-60">
+              <div className="flex md:flex-col justify-between w-full md:w-52 gap-4 px-8 md:px-0">
                 <InfoGlycemicCard
                   label="Valor mais alto"
                   value={glycemics?.data.max ?? 0}
@@ -212,11 +212,13 @@ export default function GlycemicControlPage() {
                 />
               </div>
 
-              <div className="bg-white rounded-lg p-4 h-full w-full">
-                <LineChart glycemic={glycemics.data} />
+              <div className="w-full overflow-x-auto relative md:static ml-8 md:ml-0">
+                <div className="bg-white rounded-lg p-4 w-[1220px] h-[160px] md:w-full md:h-full">
+                  <LineChart glycemic={glycemics.data} />
+                </div>
               </div>
             </section>
-            <section className="mt-8">
+            <section className="mt-8 w-full overflow-x-auto ml-8 md:ml-0">
               {glycemics?.data.glycemic.length && (
                 <DataTable data={glycemics?.data.glycemic} columns={columns} />
               )}
