@@ -12,7 +12,7 @@ import { cx } from 'class-variance-authority';
 export default function Services() {
   const router = useRouter();
   const { toast } = useContext(ToastContext);
-  const { services, servicesUser, isServicesLoading } =
+  const { services, servicesUser, isServicesLoading, refetchServicesUser } =
     useContext(ServicesContext);
 
   const getServiceImage = (slug: string) => {
@@ -47,7 +47,7 @@ export default function Services() {
         description: 'Serviço conectado com sucesso',
         variant: 'success',
       });
-
+      refetchServicesUser();
       router.push('/dashboard');
     } catch {
       toast({

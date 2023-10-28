@@ -15,6 +15,7 @@ type ServicesContextType = {
   servicesUser: Service[] | undefined;
   isServicesLoading: boolean;
   isServicesUserLoading: boolean;
+  refetchServicesUser: () => void;
 };
 
 export const ServicesContext = createContext<ServicesContextType>(
@@ -33,12 +34,13 @@ export default function ServicesProvider({
     }
   );
 
-  const { data: servicesUser, isLoading: isServicesUserLoading } = useQuery(
-    'servicesUser',
-    () => {
-      return axios.get('/api/services/user').then(res => res.data.data);
-    }
-  );
+  const {
+    data: servicesUser,
+    isLoading: isServicesUserLoading,
+    refetch: refetchServicesUser,
+  } = useQuery('servicesUser', () => {
+    return axios.get('/api/services/user').then(res => res.data.data);
+  });
 
   return (
     <ServicesContext.Provider
@@ -47,6 +49,7 @@ export default function ServicesProvider({
         servicesUser,
         isServicesLoading,
         isServicesUserLoading,
+        refetchServicesUser,
       }}
     >
       {children}
